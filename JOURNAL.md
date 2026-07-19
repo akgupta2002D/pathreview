@@ -14,6 +14,18 @@ way to confirm the server is responding as expected. Filling in those
 examples would make the docs a practical smoke-test guide as well as a
 reference.
 
+**Is this right for me?**
+- [x] Scope is clear — one file (`docs/API.md`); add example `curl` calls for documented endpoints
+- [x] Effort fits — labeled Tier 1 / good first issue; estimated 2–3 hours
+- [x] Skills match — documentation + basic HTTP/`curl`; no deep backend or RAG changes required
+- [x] Verifiable — I can run the API locally and confirm each example returns a sensible response
+- [x] Unblocked — app setup is confirmed; work does not depend on unfinished features elsewhere
+
+**Selection notes:** This is a focused docs gap rather than a bug hunt. The API surface in
+`docs/API.md` is small (health, auth, profiles, reviews), so adding copy-pasteable
+examples is a concrete, reviewable change that still teaches me the real request shapes
+and auth flow. That makes it a good first contribution without overcommitting scope.
+
 **Branch name:** docs/add-journal
 
 **Setup confirmation:** [x] App runs locally at localhost:5173
