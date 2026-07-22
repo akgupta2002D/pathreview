@@ -50,3 +50,7 @@ and auth flow. That makes it a good first contribution without overcommitting sc
 
 **What a successful fix will add:** Working `curl` examples under each endpoint
 section so a first-time setup can smoke-test the API from the docs alone.
+
+**Solution plan:** See [`PLAN.md`](./PLAN.md) — approach, files to touch,
+example `curl` sketches, risks (#154/#155 health quirks, login form vs JSON),
+and a docs-only test plan for issue #117.
