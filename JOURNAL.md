@@ -31,3 +31,22 @@ and auth flow. That makes it a good first contribution without overcommitting sc
 **Setup confirmation:** [x] App runs locally at localhost:5173
 
 **Cohort ledger:** [x] Issue added to cohort ledger
+
+## Week 8 — Reproduce & plan
+
+**Reproduction steps:**
+1. Opened `docs/API.md` and confirmed every endpoint is described with no example `curl` invocations.
+2. With the API running locally, ran:
+   ```bash
+   curl -s http://localhost:8000/health
+   ```
+3. Received a JSON health payload (HTTP 503 / `"status":"unhealthy"`) with
+   `postgres` and `redis` marked unhealthy and `vector_db` healthy. That
+   proves the API is reachable; the unhealthy flags look like known probe bugs
+   (#154 SQLAlchemy `text()` usage, #155 missing `redis_host` on Settings), not
+   a missing-docs problem.
+4. Gap location: `docs/API.md` only — listings for Health, Auth, Profiles, and
+   Reviews with no copy-pasteable examples.
+
+**What a successful fix will add:** Working `curl` examples under each endpoint
+section so a first-time setup can smoke-test the API from the docs alone.
