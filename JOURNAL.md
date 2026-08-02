@@ -26,7 +26,7 @@ reference.
 examples is a concrete, reviewable change that still teaches me the real request shapes
 and auth flow. That makes it a good first contribution without overcommitting scope.
 
-**Branch name:** docs/add-journal
+**Branch name:** docs/117-api-curl-examples
 
 **Setup confirmation:** [x] App runs locally at localhost:5173
 
@@ -54,3 +54,43 @@ section so a first-time setup can smoke-test the API from the docs alone.
 **Solution plan:** See [`PLAN.md`](./PLAN.md) — approach, files to touch,
 example `curl` sketches, risks (#154/#155 health quirks, login form vs JSON),
 and a docs-only test plan for issue #117.
+
+## Week 9 — Solution building & PR submission
+
+### Check-in 1 (mid-week)
+
+**Current progress:**
+Renamed the working branch to `docs/117-api-curl-examples` to match
+`CONTRIBUTING.md`. Implemented the core PLAN.md work: added copy-pasteable
+`curl` examples under Health, Authentication, Profiles, and Reviews in
+`docs/API.md`, including seed-user login (form-encoded), Bearer token reuse,
+and multipart profile create. Documented the known `/health` 503 quirk so
+readers are not blocked.
+
+**Next steps:**
+Open a draft PR against upstream, request peer/mentor feedback in Slack, run
+`make check` and `make test-unit` and note any pre-existing failures, then
+finalize the PR template and Check-in 2 with the PR link.
+
+**Blockers:**
+None so far — this is a docs-only change, so no new unit tests are required
+beyond confirming existing suites are not worsened.
+
+---
+
+### Check-in 2 (end of week)
+
+**PR link:** [pending — add when PR is submitted]
+
+**Branch:** `docs/117-api-curl-examples`
+
+**What you built:**
+[1–3 sentences summarizing what your fix does and how it works]
+
+**Tests added or updated:**
+Docs-only change — no unit test files updated. Verified with local `curl`
+against `/health` and by matching examples to `api/routes/*.py` request shapes.
+
+**Self-review confirmation:** [ ] make check passes  [ ] make test-unit passes
+
+**Draft PR feedback received from:** [name or Slack handle, or "none"]
