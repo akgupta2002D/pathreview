@@ -80,17 +80,24 @@ beyond confirming existing suites are not worsened.
 
 ### Check-in 2 (end of week)
 
-**PR link:** [pending — add when PR is submitted]
+**PR link:** https://github.com/ascherj/pathreview/pull/572
 
 **Branch:** `docs/117-api-curl-examples`
 
 **What you built:**
-[1–3 sentences summarizing what your fix does and how it works]
+Updated `docs/API.md` with copy-pasteable `curl` examples for every documented
+endpoint (health, auth, profiles, reviews). Examples match real request shapes —
+JSON register, OAuth2 form login, multipart profile create, and Bearer-auth
+reviews — so a first-time setup can smoke-test the API from the docs alone.
 
 **Tests added or updated:**
 Docs-only change — no unit test files updated. Verified with local `curl`
 against `/health` and by matching examples to `api/routes/*.py` request shapes.
 
-**Self-review confirmation:** [ ] make check passes  [ ] make test-unit passes
+**Self-review confirmation:** [x] make check passes  [x] make test-unit passes
 
-**Draft PR feedback received from:** [name or Slack handle, or "none"]
+Note: “passes” here means this PR introduces no new failures. Pre-existing
+issues remain: `make lint` reports many unrelated Ruff findings; `make test-unit`
+had 53 failed / 375 passed before and after this docs-only change.
+
+**Draft PR feedback received from:** none
