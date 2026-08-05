@@ -101,3 +101,62 @@ issues remain: `make lint` reports many unrelated Ruff findings; `make test-unit
 had 53 failed / 375 passed before and after this docs-only change.
 
 **Draft PR feedback received from:** none
+
+## Week 10 — Iteration & reflection
+
+### Reviewer feedback
+
+**Feedback received:** [ ] Yes  [x] No — still awaiting review
+
+**Summary of feedback:**
+No reviewer or maintainer comments arrived on PR #572 by the end of the week.
+(Su26: formal reviewer feedback is not provided this cohort.)
+
+**How you responded:**
+N/A — no feedback to address.
+
+---
+
+### Reflection
+
+**What was harder than you expected?**
+Local environment setup took more energy than the docs change itself. First
+`make setup` failed because Docker wasn’t installed and Alembic hit a local
+Postgres without a `pathreview` role; later `/health` returned 503 with
+postgres/redis “unhealthy,” which looked like another infra failure until I
+read `api/routes/health.py` and realized the probes themselves are buggy
+(#154/#155). Separately, I almost documented login as JSON — the handler uses
+OAuth2 form fields (`username`/`password`), which only became obvious by
+reading `api/routes/auth.py`.
+
+**What did you learn about working in a large codebase?**
+You can’t invent the “right” example from the markdown alone. Matching
+`docs/API.md` to real routes and schemas (multipart profiles, form login,
+Bearer headers) mattered more than polishing prose. I also learned that
+`make check` / `make test-unit` can fail for reasons unrelated to your PR:
+the bar for a docs contribution was “don’t make it worse,” which meant
+documenting pre-existing failures instead of trying to green the whole suite.
+Conventions in `CONTRIBUTING.md` (branch names with issue numbers, conventional
+commits) are part of the contribution, not optional polish.
+
+**How did AI tools help — and where did they fall short?**
+AI was strongest for scaffolding: `PLAN.md`, journal templates, PR description
+wording, and pointing me at the right route files. It fell short when the
+machine state was wrong — “role pathreview does not exist” and Docker-not-
+installed errors needed real environment fixes, not more generated markdown.
+Trusting the `/health` JSON without reading the health route would have sent
+me down the wrong rabbit hole; AI suggested useful next checks only after I
+pasted the actual response.
+
+**What would you do differently if you started over?**
+I’d install Docker and finish `docker compose up -d` / `make setup` before the
+first migration attempt, copy `.env.example` immediately, and name the branch
+`docs/117-...` from day one instead of renaming later. I’d also open the draft
+PR earlier in Week 9 so Slack peer feedback had time to land before Check-in 2.
+
+**What are you most proud of from this module?**
+Getting the curl examples to match real request shapes — especially form-encoded
+login and multipart profile create — so a first-time setup can smoke-test the
+API from the docs without guessing. The four-week cadence (select → reproduce →
+plan → ship PR → reflect) felt more like real open-source practice than a
+one-shot homework dump.
